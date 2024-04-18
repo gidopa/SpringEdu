@@ -2,13 +2,15 @@ package com.spring.member.vo;
 
 import java.sql.Date;
 
+import org.springframework.stereotype.Component;
+
 //VO란?
 //Value Object라는 뜻으로
 //역할1. 데이터베이스에 저장된 회원 한사람의 정보를 조회한 후
 //     VO클래스의 변수에 저장할 역할
 //역할2. 새로운 회원정보 하나를 데이터베이스에 insert하기전에
 //     임시로 VO클래스의 각변수에 저장할 역할
-
+@Component
 public class MemberVO {
 
 	//변수

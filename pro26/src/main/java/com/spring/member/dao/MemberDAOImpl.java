@@ -14,20 +14,15 @@ import org.springframework.stereotype.Repository;
 
 import com.spring.member.vo.MemberVO;
 
+import lombok.RequiredArgsConstructor;
 
-
-//사원  DB작업을 직접 하는 클래스 
+@RequiredArgsConstructor
+@Repository
 public class MemberDAOImpl implements MemberDAO{
 
 	//1. SqlSessionTemplate을 주입받아 저장하기 위한 참조변수 선언 
-	private SqlSession sqlSession;
+	private final SqlSession sqlSession;
 	
-	//2. SqlSessionTemplate을 매개변수로 전달받아 위 sqlSession변수에 저장(주입)하기위한 setter메소드 선언
-	//참고. action-mybatis.xml 설정파일  5. 구문을 꼭 참고해서 보자 ~~
-	public void setSqlSession(SqlSession sqlSession) {
-		this.sqlSession = sqlSession;
-	}
-		
 	//모든 회원 조회 
 	@Override
 	public List selectAllMembers() throws DataAccessException {

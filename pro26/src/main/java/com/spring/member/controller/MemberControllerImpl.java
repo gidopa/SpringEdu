@@ -5,38 +5,29 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.multiaction.MultiActionController;
 
 import com.spring.member.service.MemberService;
 import com.spring.member.vo.MemberVO;
 
-//MVC중에 C  
-//사장 
-public class MemberControllerImpl extends MultiActionController implements MemberController {
+import lombok.RequiredArgsConstructor;
 
-	// new MemberServiceImpl();객체를 주입할 변수 
-	private MemberService memberService; 
+@RequiredArgsConstructor
+@Controller
+public class MemberControllerImpl implements MemberController {
 	
-	
-	//action-servlet.xml파일에서 
-	//MemberControllerImpl에 대한 객체를 생성한 후
-	//<property>태그를 이용해 setMemberService메소드를 호출할때...
-	//매개변수로 MemberServiceImpl객체를 전달 하여 의존하는 객체를 주입시켜 저장하기 위해
-	//아래의 메소드가 필요하다.
-	public void setMemberService(MemberService memberService) {
-		this.memberService = memberService;
-	}
+	private final MemberService memberService; 
 	
 	// /member/listMembers.do DB에 저장된 모든 회원 조회 요청 주소를 받았을때 호출 되는 메소드로
-	// 
 	@Override
 	public ModelAndView listMembers(HttpServletRequest request, 
 									HttpServletResponse response) 
 											throws Exception {	
 		
-	//요청한 주소를 이용해 응답할 값을 마련
-		//부장 MemberServiceImpl객체의 listMembers()메소드를 호출하여
+		//MemberServiceImpl객체의 listMembers()메소드를 호출하여
 		//모든 회원 조회 요청을 명령함!
 		//웹브라우저로 응답할 조회한 정보들이 담긴  List배열을 반환 받는다.
 		List membersList = memberService.listMembers();

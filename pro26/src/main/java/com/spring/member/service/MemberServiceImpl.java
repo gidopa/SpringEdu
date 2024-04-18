@@ -3,22 +3,20 @@ package com.spring.member.service;
 import java.util.List;
 
 import org.springframework.dao.DataAccessException;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import com.spring.member.dao.MemberDAO;
 import com.spring.member.vo.MemberVO;
 
-//부장 
+import lombok.RequiredArgsConstructor;
 
+@RequiredArgsConstructor
+@Service
 public class MemberServiceImpl implements MemberService {
 
 	//사원 MemberDAOImpl객체를 주입받아 저장할 참조변수 선언
-	private MemberDAO memberDAO;// = new MemberDAOImpl();
-	
-	//action-service.xml에서 <property>태그에 의해 호출되는 메소드로
-	//반드시 만들어 놓아야 합니다.
-	public void setMemberDAO(MemberDAO memberDAO) {
-		this.memberDAO = memberDAO;
-	}
+	private final MemberDAO memberDAO;// = new MemberDAOImpl();
 	
 	
 	//모든 회원 정보 조회 기능 

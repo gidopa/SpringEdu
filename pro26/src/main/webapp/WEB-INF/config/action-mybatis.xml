@@ -70,17 +70,7 @@
 	  		<constructor-arg index="0" ref="sqlSessionFactory"></constructor-arg>
 	  	
 	  </bean>
-	 
-	 <!-- 
-	 	5. MemberDAOImpl 빈(객쳬) 생성하여 위의 SqlSessionTemplate빈을 
-	 	   MemberDAOImpl의 변수에 주입!!!!!!!!
-	  -->
-	  <bean id="memberDAO"   class="com.spring.member.dao.MemberDAOImpl">
-	  
-	  	   <property name="sqlSession"   ref="sqlSession"   />
-	  
-	  </bean>
-	  
+
 	
 
 </beans>			
